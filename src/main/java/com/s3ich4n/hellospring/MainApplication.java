@@ -18,6 +18,7 @@ public class MainApplication {
         // 스프링 컨테이너를 만들고, 등록하고, 사용시작을 준비한다
         GenericApplicationContext applicationContext = new GenericApplicationContext();
         applicationContext.registerBean(HelloController.class);
+        applicationContext.registerBean(SimpleHelloService.class);
         applicationContext.refresh();
 
         TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
