@@ -1,15 +1,14 @@
 package com.s3ich4n.hellospring;
 
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
-import org.springframework.boot.web.servlet.ServletContextInitializer;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 
 import java.io.IOException;
 
@@ -27,9 +26,11 @@ public class MainApplication {
                 // 웹 요청의 응답을 세팅함. 뭘 만드는지 알아야 한다는 뜻임.
                 @Override
                 protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                    resp.setStatus(200);
-                    resp.setHeader("Content-Type", "text/plain");
-                    resp.getWriter().println("Hello Servlet");
+                    String name = req.getParameter("name");
+
+                    resp.setStatus(HttpStatus.OK.value());
+                    resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
+                    resp.getWriter().println("Hello " + name);
                 }
                 // url 매핑을 함. 익명클래스로 만든걸 매핑하겠다는 뜻
             }).addMapping("/hello");
