@@ -9,7 +9,6 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping("/hello")
-@MyComponent
 public class HelloController {
     private final HelloService helloService;
 
