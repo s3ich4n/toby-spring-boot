@@ -13,4 +13,14 @@ public class HelloServiceTest {
 
         Assertions.assertThat(ret).isEqualTo("Hello Test");
     }
+
+    @Test
+    void helloDecorator() {
+        // 간단히 람다식을 넣어서 테스트해보자.
+        HelloDecorator decorator = new HelloDecorator(name -> name);
+
+        var ret = decorator.sayHello("Test");
+
+        Assertions.assertThat(ret).isEqualTo("*Test*");
+    }
 }
