@@ -1,0 +1,20 @@
+package com.s3ich4n.hellospring;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+//@Component 를 @Service 대신 붙여도 무방
+@Service
+@Primary
+public class HelloDecorator implements HelloService{
+    private final HelloService helloService;
+
+    public HelloDecorator(HelloService helloService) {
+        this.helloService = helloService;
+    }
+
+    @Override
+    public String sayHello(String name) {
+        return "*" + helloService.sayHello(name) + "*";
+    }
+}
