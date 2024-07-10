@@ -3,24 +3,8 @@ package com.s3ich4n.hellospring;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-@UnitTest
-@interface FastUnitTest{ }
-
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.ANNOTATION_TYPE, ElementType.METHOD })
-@Test
-@interface UnitTest{ }
-
-
 public class HelloServiceTest {
-    @FastUnitTest
+    @Test
     void simpleHelloService() {
         SimpleHelloService helloService = new SimpleHelloService();
 
@@ -30,7 +14,7 @@ public class HelloServiceTest {
         Assertions.assertThat(ret).isEqualTo("Hello Test");
     }
 
-    @UnitTest
+    @Test
     void helloDecorator() {
         // 간단히 람다식을 넣어서 테스트해보자.
         HelloDecorator decorator = new HelloDecorator(name -> name);
