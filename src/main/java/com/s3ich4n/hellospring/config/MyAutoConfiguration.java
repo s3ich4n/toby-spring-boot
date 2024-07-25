@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Configuration(proxyBeanMethods = false)    // 이 옵션을 적용.
+@Configuration(proxyBeanMethods = false)    // 이 옵션을 적용. 내가 생성한 Bean들이 proxy로 만들어지지 않음을 의미
 public @interface MyAutoConfiguration {
 
 }

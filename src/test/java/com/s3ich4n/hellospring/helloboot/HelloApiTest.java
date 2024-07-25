@@ -1,4 +1,4 @@
-package com.s3ich4n.hellospring;
+package com.s3ich4n.hellospring.helloboot;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
