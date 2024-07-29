@@ -1,4 +1,4 @@
-package com.s3ich4n.hellospring;
+package com.s3ich4n.hellospring.helloboot;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

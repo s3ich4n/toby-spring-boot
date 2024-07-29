@@ -1,7 +1,5 @@
 package com.s3ich4n.hellospring.helloboot;
 
-import com.s3ich4n.hellospring.HelloDecorator;
-import com.s3ich4n.hellospring.SimpleHelloService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
