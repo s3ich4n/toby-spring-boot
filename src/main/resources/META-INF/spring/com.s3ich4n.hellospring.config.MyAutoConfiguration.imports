@@ -1,2 +1,4 @@
+com.s3ich4n.hellospring.config.autoconfig.PropertyPlaceholderConfig
 com.s3ich4n.hellospring.config.autoconfig.DispatcherServletConfig
 com.s3ich4n.hellospring.config.autoconfig.TomcatWebServerConfig
+com.s3ich4n.hellospring.config.autoconfig.PropertyPostProcessorConfig
