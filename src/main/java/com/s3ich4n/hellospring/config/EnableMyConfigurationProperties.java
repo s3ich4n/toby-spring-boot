@@ -1,4 +1,4 @@
-package com.s3ich4n.hellospring.config.autoconfig;
+package com.s3ich4n.hellospring.config;
 
 import org.springframework.context.annotation.Import;
 
@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Import(MyConfigurationPropertiesImportSelector.class)
-public @interface EnableMyAutoConfigurationProperties {
+public @interface EnableMyConfigurationProperties {
     Class<?> value();
 }
