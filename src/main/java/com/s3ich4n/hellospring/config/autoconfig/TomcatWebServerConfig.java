@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 
 @MyAutoConfiguration
 @ConditionalMyOnClass("org.apache.catalina.startup.Tomcat")
+@EnableMyAutoConfigurationProperties(ServerProperties.class)
 public class TomcatWebServerConfig {
     @Bean("tomcatWebServerFactory")
     public ServletWebServerFactory servletWebServerFactory(ServerProperties properties) {

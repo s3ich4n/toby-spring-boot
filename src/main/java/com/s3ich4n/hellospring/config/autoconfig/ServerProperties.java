@@ -1,5 +1,8 @@
 package com.s3ich4n.hellospring.config.autoconfig;
 
+import com.s3ich4n.hellospring.config.MyConfigurationProperties;
+
+@MyConfigurationProperties(prefix = "server")
 public class ServerProperties {
     private String contextPath;
 
