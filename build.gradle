@@ -19,6 +19,8 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework:spring-jdbc'
+
     // tomcat 안쓰려면 아래 내용을 uncomment
     // implementation('org.springframework.boot:spring-boot-starter-web') {
     //     exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
@@ -26,6 +28,8 @@ dependencies {
     // Jetty를 안쓰려면 주석만
     // implementation 'org.springframework.boot:spring-boot-starter-jetty:3.2.4'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'com.h2database:h2'
+    implementation 'com.zaxxer:HikariCP'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
