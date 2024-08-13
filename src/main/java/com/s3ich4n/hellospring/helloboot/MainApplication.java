@@ -1,11 +1,11 @@
 package com.s3ich4n.hellospring.helloboot;
 
-import com.s3ich4n.hellospring.config.MySpringBootApplication;
 import jakarta.annotation.PostConstruct;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-@MySpringBootApplication
+@SpringBootApplication
 // 이 애플리케이션 자체도 스프링 빈이다. 그래서 다른 빈으로 주입받을 수 있다.
 public class MainApplication {
     private final JdbcTemplate jdbcTemplate;
