@@ -21,17 +21,17 @@ public class PropertyPostProcessorConfig {
         return new BeanPostProcessor() {
             @Override
             public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-                // reflection 을 잘 해야하지만, 스프링 프레임워크는 이걸 또 준비해놨다
-                MyConfigurationProperties annotation = findAnnotation(bean.getClass(), MyConfigurationProperties.class);
+            // reflection 을 잘 해야하지만, 스프링 프레임워크는 이걸 또 준비해놨다
+            MyConfigurationProperties annotation = findAnnotation(bean.getClass(), MyConfigurationProperties.class);
 
-                if (annotation == null) return bean;
+            if (annotation == null) return bean;
 
-                Map<String, Object> attrs = getAnnotationAttributes(annotation);
+            Map<String, Object> attrs = getAnnotationAttributes(annotation);
 
-                String prefix = (String) attrs.get("prefix");
+            String prefix = (String) attrs.get("prefix");
 
-                // 저 `name` 은 접두사
-                return Binder.get(env).bindOrCreate(prefix, bean.getClass());
+            // 저 `name` 은 접두사
+            return Binder.get(env).bindOrCreate(prefix, bean.getClass());
             }
         };
     }
