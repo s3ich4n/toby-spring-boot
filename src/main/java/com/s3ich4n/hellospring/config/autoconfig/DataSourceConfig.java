@@ -23,8 +23,22 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableMyConfigurationProperties(MyDataSourceProperties.class)
 @EnableTransactionManagement
 public class DataSourceConfig {
+    // 이게 없으면 위의 메소드도 실행되지 못하게 하려면...?
     @Bean
     @ConditionalMyOnClass("com.zaxxer.hikari.HikariDataSource") // HikariDataSource 가 있어야...
+    @ConditionalOnMissingBean
+    DataSource hikariDataSource(MyDataSourceProperties properties) {
+        HikariDataSource dataSource = new HikariDataSource();
+
+        dataSource.setDriverClassName(properties.getDriverClassName());
+        dataSource.setJdbcUrl(properties.getUrl());
+        dataSource.setUsername(properties.getUsername());
+        dataSource.setPassword(properties.getPassword());
+
+        return dataSource;
+    }
+
+    @Bean
     @ConditionalOnMissingBean
     DataSource dataSource(MyDataSourceProperties properties) throws ClassNotFoundException {
         // 매번 커넥션을 맺는다.
@@ -35,20 +49,6 @@ public class DataSourceConfig {
         // 드라이버 타입으로 캐스팅 필요
         dataSource.setDriverClass((Class<? extends Driver>) Class.forName(properties.getDriverClassName()));
         dataSource.setUrl(properties.getUrl());
-        dataSource.setUsername(properties.getUsername());
-        dataSource.setPassword(properties.getPassword());
-
-        return dataSource;
-    }
-
-    // 이게 없으면 위의 메소드도 실행되지 못하게 하려면...?
-    @Bean
-    @ConditionalOnMissingBean
-    DataSource hikariDataSource(MyDataSourceProperties properties) {
-        HikariDataSource dataSource = new HikariDataSource();
-
-        dataSource.setDriverClassName(properties.getDriverClassName());
-        dataSource.setJdbcUrl(properties.getUrl());
         dataSource.setUsername(properties.getUsername());
         dataSource.setPassword(properties.getPassword());
 
